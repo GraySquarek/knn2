@@ -8,7 +8,6 @@ filterwarnings("ignore")
 
 #import sns as sns
 
-filterwarnings("ignore")
 
 df = pd.read_excel('Gruppy_22__1,xlsx/Gruppy_22__1.xlsx')
 df.head()
@@ -42,7 +41,6 @@ def determine_preference_of_drink_by_knn(train_df, new_object, k=5, type_norm=2)
                                                ord=type_norm, axis=1))
 
     answer = train_df.sort_values('distance_to_new_object').iloc[:k]['К/Ч'].value_counts().index.tolist()[0]
-    #     .mode().values[0]  можно и так
     return f'Человек с таким набором характеристик предпочитает пить {help_dict[answer]}'
 
 print(determine_preference_of_drink_by_knn(train,test.iloc[0,[0,1,2,3,4,6,7]]))
